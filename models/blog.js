@@ -13,7 +13,7 @@ const blogSchema = new Schema ({
     type : String,
     required : false,
    },
-   createdAt :{
+   createdBy :{
      type : Schema.Types.ObjectId ,
      ref : "user"
    },

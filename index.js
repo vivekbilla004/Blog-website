@@ -1,7 +1,7 @@
 const express = require("express")
 const path = require("path")
-const userRouter = require("./routes/user");
-const blogRouter = require("./routes/blog");
+const userRoute = require("./routes/user");
+const blogRoute = require("./routes/blog");
 const { default: mongoose } = require("mongoose");
 const {checkForAuthenticationCookie} = require("./middlewares/authentication");
 const cookieParser = require("cookie-parser");
@@ -19,14 +19,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser())
 app.use(checkForAuthenticationCookie("token"));
 app.use(express.static(path.resolve("./public")))
+app.use('/blog/uploads', express.static(path.join(__dirname, 'public/uploads')));
 
 app.set("view engine", "ejs")
 app.set("views" , path.resolve("./views"));
+mongoose.set('strictPopulate', false);
 
 
-app.use("/user" , userRouter)
+app.use("/user" , userRoute)
 
-app.use("/blog" , blogRouter)
+app.use("/blog" , blogRoute)
 
 
 app.get("/" , async (req,res) => {

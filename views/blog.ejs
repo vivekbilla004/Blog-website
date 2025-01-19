@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head') %>
+    <title>Blog</title>
+  </head>
+  <body>
+  
+
+    <div class="container mt-4">
+      <h1><%= blogId.title %></h1>
+      <img src="<%= blogId.coverImageUrl %>" width="300px" />
+      <pre class="mt-3"><%= blogId.body %></pre>
+    </div>
+
+
+
+    <div class="container mt-3">
+      <h1>Comments (<%= comments.length %>)</h1>
+      <% if (locals.user) { %>
+      <form action="/blog/comment/<%= blogId._id %>" method="post">
+        <div class="mb-3">
+          <input
+            type="text"
+            name="content"
+            class="form-control"
+            placeholder="Enter your comment"
+          />
+          <button class="btn btn-sm btn-primary" type="submit">Add</button>
+        </div>
+      </form>
+
+      <% } %>
+     
+    </div>
+
+
+
+    <%- include('./partials/script') %>
+  </body>
+</html>
