@@ -16,14 +16,14 @@ Frontend: EJS
 
 #Installation
 
-1. Clone the repository:
+1. Clone the repository:-
 git clone https://github.com/your-username/blogify.git
 cd blogify
-2. Install dependencies
+2. Install dependencies:-
 npm install.
-3. Set up a .env file and configure environment variables:
+3. Set up a .env file and configure environment variables:-
 PORT=5000
 MONGO_URI=your_mongodb_connection_string
 SESSION_SECRET=your_secret_key
-4. Start the server:
+4. Start the server:-
 npm start
